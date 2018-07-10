@@ -26,6 +26,7 @@ import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
 import Question from './Question';
+import '../static/css/questionList.css';
 
 export class QuestionList extends React.Component {
   constructor(props) {
@@ -34,6 +35,14 @@ export class QuestionList extends React.Component {
       questions : [],
       props
     };
+
+  }
+
+  componentWillMount() {
+    const jwt = localStorage.getItem('tubetestjwt');
+    if (jwt === null) {
+      this.props.history.push('/login');
+    }
   }
 
   async componentDidMount() {
@@ -55,7 +64,9 @@ export class QuestionList extends React.Component {
         {this.state.questions.map(q => {
           return(
               // <p key={q._id}>{q.text}</p>
+            <div class='questionBox'>
               <Question {...q} />
+            </div>
           );
         })}
       </div>
