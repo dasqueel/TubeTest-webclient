@@ -23,11 +23,12 @@ checkAnswer()
 import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
+import '../static/css/question.css';
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
-    console.log('inside ques constructor', props);
+    // console.log('inside ques constructor', props);
 
     this.state = {
       selected: null
@@ -63,26 +64,23 @@ class Question extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <p className="title">{this.props.text}</p>
+        <form onSubmit={this.handleSubmit}>
+          <p className="title">{this.props.text}</p>
+          <div class="vertical-radio-buttons">
+            {this.props.choices.map((choice, i) => {
+              return (
+                <div>
+                  <span>
+                    <input key={i} type="radio" value={choice} id={choice} checked={this.state.selected === choice} onChange={this.handleChange} />
+                    <label for={choice}>{choice}</label>
+                  </span>
+                </div>
+              );
+            })}
 
-          {this.props.choices.map((choice, i) => {
-            return(
-              <label>
-                <input
-                  key={i}
-                  type="radio"
-                  value={choice}
-                  checked={this.state.selected === choice}
-                  onChange={this.handleChange}
-                />
-                {choice}
-              </label>
-            )
-          })}
-
-        <button type="submit" className="submit-button">Select Answer</button>
-      </form>
+            <button type="submit" className="submit-button">Select Answer</button>
+          </div>
+        </form>
     );
   }
 };
