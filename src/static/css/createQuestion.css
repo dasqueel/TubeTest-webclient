@@ -1,0 +1,21 @@
+iframe {
+  margin-bottom: 50px;
+}
+
+videoDiv {
+  margin: 0 auto;
+  width: 100px;
+}
+
+#questionText {
+  margin-bottom: 50px;
+  width: 40%;
+}
+
+body {
+    padding-bottom: 40px;
+}
+
+button {
+  margin: 8px;
+}

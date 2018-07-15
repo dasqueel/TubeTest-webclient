@@ -28,7 +28,6 @@ import '../static/css/question.css';
 class Question extends React.Component {
   constructor(props) {
     super(props);
-    // console.log('inside ques constructor', props);
 
     this.state = {
       selected: null
@@ -47,33 +46,40 @@ class Question extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // alert(`You chose ${this.state.selected}`);
     if (this.state.selected === this.props.answer) {
       alert('correct');
     }
     else alert('incorrect');
 
     // do back end updating with the questionInteraction
-    axios.post(`${apiUrl}/questionInteraction`, {
-      questionId: this.props._id,
-      answer: this.state.selected
-    })
-      .then(resp => console.log(resp))
-      .catch(err => console.log(err));
+    let jwt = localStorage.getItem('tubetestjwt');
+    axios.defaults.headers.common['Authorization'] = jwt;
+    axios
+      .post(`${apiUrl}/questionInteraction`, {
+        questionId: this.props._id,
+        choice: this.state.selected
+      })
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err));
   }
 
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
           <p className="title">{this.props.text}</p>
-          <div class="vertical-radio-buttons">
+          <div className="vertical-radio-buttons">
             {this.props.choices.map((choice, i) => {
               return (
                 <div>
-                  <span>
-                    <input key={i} type="radio" value={choice} id={choice} checked={this.state.selected === choice} onChange={this.handleChange} />
-                    <label for={choice}>{choice}</label>
-                  </span>
+                    <input
+                      key={i}
+                      type="radio"
+                      value={choice}
+                      id={choice}
+                      checked={this.state.selected === choice}
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor={choice}>{choice}</label>
                 </div>
               );
             })}
