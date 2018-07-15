@@ -1,27 +1,3 @@
-/*
-
-display the title
-
-choices
-
-submit button
-
-where to handle different type of problems?
-multiple choice w/ one answers
-multiple choice w/ multiple answers
-
-the problem should have a uid or a key
-
-methods:
-checkAnswer()
-  which checks if answer is correct
-  and does a post request to server to archive the questionInteraction
-
-getQuestions()
-  get question to get top 20 problems
-
-*/
-
 import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
@@ -38,11 +14,13 @@ export class QuestionList extends React.Component {
 
   }
 
-  componentWillMount() {
+  async componentWillMount() {
+    // check if jwt is in local storage
     const jwt = localStorage.getItem('tubetestjwt');
     if (jwt === null) {
       this.props.history.push('/login');
     }
+
   }
 
   async componentDidMount() {
@@ -58,18 +36,10 @@ export class QuestionList extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {/* {console.log('inside render return',this.state)} */}
-        {this.state.questions.map(q => {
-          return(
-              // <p key={q._id}>{q.text}</p>
-            <div class='questionBox'>
-              <Question {...q} />
-            </div>
-          );
+    return <div className="questionBox">
+        {this.state.questions.map((q, i) => {
+          return <Question key={i} {...q} />
         })}
-      </div>
-    );
+      </div>;
   }
 };

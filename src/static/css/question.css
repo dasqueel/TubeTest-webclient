@@ -1,0 +1,19 @@
+.vertical-radio-buttons div {
+  display: block;
+  padding: 0 0 5px 5px;
+  clear: both;
+}
+
+.vertical-radio-buttons label {
+  font-size: rem-calc(16);
+  float: left;
+}
+
+.vertical-radio-buttons input {
+  float: left;
+  width: 20px;
+  margin-left: 20px;
+  margin-top: 6px;
+  padding: 0;
+  -webkit-appearance: radio;
+}

@@ -1,0 +1,7 @@
+* look into better ways to store / handle JWT or authentication
+
+* look into applying Redux
+
+* do variable destructering with this.state... and this.props...
+
+* add to /home page
