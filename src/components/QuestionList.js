@@ -36,10 +36,16 @@ export class QuestionList extends React.Component {
   }
 
   render() {
-    return <div className="questionBox">
-        {this.state.questions.map((q, i) => {
-          return <Question key={i} {...q} />
-        })}
-      </div>;
+    return (
+      <div>
+          {this.state.questions.map((q, i) => {
+            return (
+              <div className="questionBox">
+                <Question key={i} {...q} />
+              </div>
+            )
+          })}
+      </div>
+    );
   }
 };
