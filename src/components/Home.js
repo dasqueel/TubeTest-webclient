@@ -54,9 +54,20 @@ export class Home extends React.Component {
   render() {
     let username = this.state.username;
     return(
-      <div className='header'>
-        <p>{ username } info would be displayed here</p>
-        <button onClick={this.logout} id='logout'>Log Out</button>
+      <div>
+        <div className='header'>
+          <p>{ username } info would be displayed here</p>
+          <button onClick={this.logout} id='logout'>Log Out</button>
+        </div>
+        <div className='infoList'>
+          <ul>
+            <li>Users weekly / monthly activity</li>
+            <li>A github style calendar of activity</li>
+            <li>feed of last questions answered</li>
+            <li>metric of answers done in certain domains (computer science, math, biology, etc...)</li>
+            <li>other appropriate metrics to convey a users history of doing smart stuff</li>
+          </ul>
+        </div>
       </div>
     )
   }

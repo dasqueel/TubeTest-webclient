@@ -5,3 +5,8 @@
 .header {
   height: 80px;
 }
+
+.infoList {
+  width: 60%;
+  margin: 0 auto;
+}
