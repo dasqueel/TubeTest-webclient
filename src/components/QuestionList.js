@@ -38,13 +38,21 @@ export class QuestionList extends React.Component {
   render() {
     return (
       <div>
-          {this.state.questions.map((q, i) => {
-            return (
-              <div className="questionBox">
-                <Question key={i} {...q} />
-              </div>
-            )
-          })}
+        <div>
+          <a
+            href={`https://tubetest-react.herokuapp.com/question/${this.props.match.params.videoId}`}
+            target='_blank'>Add a Question
+          </a>
+        </div>
+        <div>
+            {this.state.questions.map((q, i) => {
+              return (
+                <div className="questionBox">
+                  <Question key={i} {...q} />
+                </div>
+              )
+            })}
+        </div>
       </div>
     );
   }

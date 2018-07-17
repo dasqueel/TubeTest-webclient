@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
+import '../static/css/login.css';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -49,7 +50,6 @@ export class Login extends React.Component {
             alert(resp);
           }
           else {
-            console.log('setting tubetestjwt: ', resp.data.token);
             // set the token to localstorage
             localStorage.setItem("tubetestjwt", resp.data.token);
 
@@ -67,7 +67,7 @@ export class Login extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='login'>
         <label>
           username:
           <input name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />

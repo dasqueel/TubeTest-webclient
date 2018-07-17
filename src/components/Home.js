@@ -11,6 +11,7 @@ display
 import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
+import '../static/css/home.css';
 
 export class Home extends React.Component {
 
@@ -19,6 +20,8 @@ export class Home extends React.Component {
     this.state = {
       username: null
     };
+
+    this.logout = this.logout.bind(this);
   }
 
   componentWillMount() {
@@ -43,11 +46,17 @@ export class Home extends React.Component {
       .catch(err => console.log(err));
   }
 
+  logout() {
+    localStorage.removeItem('tubetestjwt');
+    this.props.history.push('/login');
+  }
+
   render() {
     let username = this.state.username;
     return(
-      <div>
+      <div className='header'>
         <p>{ username } info would be displayed here</p>
+        <button onClick={this.logout} id='logout'>Log Out</button>
       </div>
     )
   }

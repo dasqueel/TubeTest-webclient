@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
+import '../static/css/register.css';
 
 export class Register extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ export class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='register'>
         <label>
           email:
           <input name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
