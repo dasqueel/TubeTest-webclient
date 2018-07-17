@@ -84,7 +84,9 @@ class Question extends React.Component {
               );
             })}
 
-            <button type="submit" className="submit-button">Select Answer</button>
+            <div>
+              <button type="submit" className="submit-button">Select Answer</button>
+            </div>
           </div>
         </form>
     );
