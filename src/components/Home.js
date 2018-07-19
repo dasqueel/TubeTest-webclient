@@ -63,7 +63,6 @@ export class Home extends React.Component {
         <Header {...this.props} />
         <div className='homeDiv'>
           <p>{ username } info would be displayed here</p>
-          {/* <button onClick={this.logout} id='logout'>Log Out</button> */}
         </div>
         <div className='infoList'>
           <ul>
