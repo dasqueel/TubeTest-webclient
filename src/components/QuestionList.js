@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
 import Question from './Question';
+import Header from './Header';
 import '../static/css/questionList.css';
 
 export class QuestionList extends React.Component {
@@ -38,6 +39,7 @@ export class QuestionList extends React.Component {
   render() {
     return (
       <div>
+        <Header {...this.props} />
         <div>
           <a
             href={`https://tubetest-react.herokuapp.com/question/${this.props.match.params.videoId}`}

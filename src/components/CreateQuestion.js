@@ -18,6 +18,7 @@ also display youtube video
 import React from 'react';
 import axios from 'axios';
 import QuestionChoice from './QuestionChoice';
+import Header from './Header';
 import { apiUrl } from '../config';
 import '../static/css/createQuestion.css';
 
@@ -159,43 +160,48 @@ export class CreateQuestion extends React.Component {
   }
 
   render() {
-    return <div className="createQuestion">
-        <div id="videoDiv">
-          <h1>Create a Question</h1>
-          <iframe width="420" height="345" src={`https://www.youtube.com/embed/${this.props.match.params.videoId}`} />
-        </div>
+    return(
+      <div>
+        <Header {...this.props} />
+        <div className="createQuestion">
+          <div id="videoDiv">
+            <h1>Create a Question</h1>
+            <iframe width="420" height="345" src={`https://www.youtube.com/embed/${this.props.match.params.videoId}`} />
+          </div>
 
-        <div>
-          <input
-            type="text"
-            name="questionText"
-            id="questionText"
-            placeholder="Question sentence..."
-            value={this.state.questionText}
-            onChange={this.handleQuestionTextChange}
-          />
-        </div>
-        <div>
-          <button id="addChoiceBtn" onClick={this.addChoice} >add choice</button>
-          <button id="removeChoiceBtn" onClick={this.removeChoice} >remove choice</button>
-        </div>
-        <div className="options">
-          {this.state.choices.map((choice, i) => {
-            return(
-              <QuestionChoice
-                key={i}
-                choiceNum={i}
-                onChoiceTextChange={this.handleChoiceTextChange}
-                onAnswerChange={this.handleAnswerChange}
-                answer={choice.answer}
-              />
-            )
-          })}
-        </div>
+          <div>
+            <input
+              type="text"
+              name="questionText"
+              id="questionText"
+              placeholder="Question sentence..."
+              value={this.state.questionText}
+              onChange={this.handleQuestionTextChange}
+            />
+          </div>
+          <div>
+            <button id="addChoiceBtn" onClick={this.addChoice} >add choice</button>
+            <button id="removeChoiceBtn" onClick={this.removeChoice} >remove choice</button>
+          </div>
+          <div className="options">
+            {this.state.choices.map((choice, i) => {
+              return (
+                <QuestionChoice
+                  key={i}
+                  choiceNum={i}
+                  onChoiceTextChange={this.handleChoiceTextChange}
+                  onAnswerChange={this.handleAnswerChange}
+                  answer={choice.answer}
+                />
+              )
+            })}
+          </div>
 
-        <div>
-          <button id="submitQuestion" onClick={this.submitQuestion}>Submit Question</button>
+          <div>
+            <button id="submitQuestion" onClick={this.submitQuestion}>Submit Question</button>
+          </div>
         </div>
-      </div>;
+      </div>
+    );
   }
 };

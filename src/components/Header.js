@@ -1,6 +1,8 @@
 import React from 'react';
 import '../static/css/header.css';
 
+import { baseUrl } from '../config';
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class Header extends React.Component {
   render() {
     return(
       <div className="header">
-        <a href="#default" class="logo">TestTube</a>
+        <a href={`${baseUrl}/home`} class="logo">TestTube</a>
         <div className="header-right">
           <a onClick={this.logout} >Logout</a>
         </div>
