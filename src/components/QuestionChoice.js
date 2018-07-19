@@ -17,17 +17,6 @@ class QuestionChoice extends React.Component {
     this.props.onAnswerChange(event.target.name);
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    // this.setState({
-    //   [name]: value
-    // });
-    // this.
-  }
-
   render() {
     return (
       <div>

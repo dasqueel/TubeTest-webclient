@@ -71,28 +71,29 @@ export class Register extends React.Component {
 
   render() {
     return (
-      <div className='register'>
-        <label>
-          email:
-          <input name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          username:
-          <input name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          password:
-          <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          password confirm:
-          <input name="passwordConfirm" type="password" value={this.state.passwordConfirm} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <button onClick={this.handleSubmit} >Register</button>
+      <div>
+        <div>
+          <h1>TubeTest Register</h1>
+        </div>
+        <div className='register'>
+          <div className='block'>
+            <label>email:</label>
+            <input name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
+          </div>
+          <div className='block'>
+            <label>username:</label>
+            <input name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+          </div>
+          <div className='block'>
+            <label>password:</label>
+            <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+          </div>
+          <div className='block'>
+            <label>password confirm:</label>
+            <input name="passwordConfirm" type="password" value={this.state.passwordConfirm} onChange={this.handleInputChange} />
+          </div>
+          <button onClick={this.handleSubmit} >Register</button>
+        </div>
       </div>
     )
   }

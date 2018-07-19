@@ -1,3 +1,15 @@
 .register {
   margin-top: 50px;
 }
+
+.block label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+
+input {
+  width: 200px;
+}

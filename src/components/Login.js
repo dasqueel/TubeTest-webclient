@@ -67,18 +67,22 @@ export class Login extends React.Component {
 
   render() {
     return(
-      <div className='login'>
-        <label>
-          username:
-          <input name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label>
-          password:
-          <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <button id="submitQstBtn" onClick={this.handleSubmit}>submit</button>
+      <div>
+        <h1>TubeTest Login</h1>
+        <div className='login'>
+
+          <div className='block'>
+            <label>username:</label>
+            <input name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+          </div>
+
+          <div className='block'>
+            <label>password:</label>
+            <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+          </div>
+
+          <button id="submitQstBtn" onClick={this.handleSubmit}>submit</button>
+        </div>
       </div>
     )
   }
