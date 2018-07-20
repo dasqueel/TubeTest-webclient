@@ -18,7 +18,7 @@ class Header extends React.Component {
   render() {
     return(
       <div className="header">
-        <a href={`${baseUrl}/home`} class="logo">TestTube</a>
+        <a href={`${baseUrl}/home`} className="logo">TestTube</a>
         <div className="header-right">
           <a onClick={this.logout} >Logout</a>
         </div>

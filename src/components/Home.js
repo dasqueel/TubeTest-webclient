@@ -19,25 +19,19 @@ export class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null
+      username: null,
+      recentQuestions: []
     };
-
-    // this.state = {
-    //   props
-    // }
-
-    // this.logout = this.logout.bind(this);
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const jwt = localStorage.getItem('tubetestjwt');
     if (!jwt) {
       this.props.history.push('/login');
     }
-  }
 
-  async componentDidMount() {
     await this.getUserInfo();
+    await this.getUserData();
   }
 
   getUserInfo() {
@@ -51,9 +45,15 @@ export class Home extends React.Component {
       .catch(err => console.log(err));
   }
 
-  logout() {
-    localStorage.removeItem('tubetestjwt');
-    this.props.history.push('/login');
+  getUserData() {
+    let jwt = localStorage.getItem('tubetestjwt');
+    axios.defaults.headers.common['Authorization'] = jwt;
+
+    axios.get(`${apiUrl}/user/questions`)
+      .then(response => {
+        this.setState({ recentQuestions: response.data });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -61,10 +61,26 @@ export class Home extends React.Component {
     return(
       <div>
         <Header {...this.props} />
+
         <div className='homeDiv'>
           <p>{ username } info would be displayed here</p>
         </div>
+
+        <div className='recentQuestionsAnswered'>
+          <h3>Recent Questions</h3>
+          <ul>
+            {this.state.recentQuestions.map((question, i) => {
+              return (
+                <li key={i}>
+                  {question.question.text}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+
         <div className='infoList'>
+          <h3>Other data to convey on home page</h3>
           <ul>
             <li>Users weekly / monthly activity</li>
             <li>A github style calendar of activity</li>
@@ -73,6 +89,7 @@ export class Home extends React.Component {
             <li>other appropriate metrics to convey a users history of doing smart stuff</li>
           </ul>
         </div>
+
       </div>
     )
   }

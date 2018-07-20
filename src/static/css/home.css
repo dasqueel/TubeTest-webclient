@@ -10,3 +10,13 @@
   width: 60%;
   margin: 0 auto;
 }
+
+.recentQuestionsAnswered {
+  width: 60%;
+  margin: auto;
+}
+
+ul {
+  display: inline-block;
+  text-align:left;
+}
