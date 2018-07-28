@@ -31,9 +31,6 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
 
-    // console.log('props usersVote: ', props.usersVote);
-    // would get usersVotes from this.props ?
-
     this.state = {
       selected: null
     };
@@ -70,7 +67,7 @@ class Question extends React.Component {
     return (
         <div className='questionContainer'>
         <div className='votingBox'>
-          <Vote {...this.props} /> {/* this.props should have user vote info this.props.score & this.props.vote */}
+          <Vote {...this.props} />
         </div>
         <div className='questionBox'>
           <p className="title">{this.props.text}</p>

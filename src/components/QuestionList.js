@@ -23,7 +23,6 @@ export class QuestionList extends React.Component {
     }
 
     await this.getQuestions();
-    await this.getUserVotes();
   }
 
   getQuestions() {
@@ -33,22 +32,6 @@ export class QuestionList extends React.Component {
     axios.get(`${apiUrl}/question/${ this.props.match.params.videoId }`)
       .then(res => {
         this.setState({ questions: res.data });
-      })
-      .catch(err => console.log(err));
-  }
-
-  getUserVotes() {
-    // have a isSignedIn variable?
-    let jwt = localStorage.getItem('tubetestjwt');
-    axios.defaults.headers.common['Authorization'] = jwt;
-
-    axios
-      .get(`${apiUrl}/user/votedQuestions`)
-      .then(response => {
-        // console.log(response.data.votedQuestions);
-        // console.log(response.data);
-        this.setState({ usersVotes: response.data.votedQuestions });
-        // this.props({ recentQuestions: response.data });
       })
       .catch(err => console.log(err));
   }
