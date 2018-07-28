@@ -1,6 +1,10 @@
 .questionBox {
-  width: 50%;
+  width: 100%;
   height: 200px;
   background-color: aqua;
   margin: 0 auto;
+}
+
+#addQuestionLink {
+  margin: 15px;
 }

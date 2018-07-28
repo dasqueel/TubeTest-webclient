@@ -22,16 +22,16 @@ export class QuestionList extends React.Component {
       this.props.history.push('/login');
     }
 
-  }
-
-  async componentDidMount() {
     await this.getQuestions();
   }
 
   getQuestions() {
+    let jwt = localStorage.getItem('tubetestjwt');
+    axios.defaults.headers.common['Authorization'] = jwt;
+
     axios.get(`${apiUrl}/question/${ this.props.match.params.videoId }`)
       .then(res => {
-        this.setState({ questions: res.data.questions });
+        this.setState({ questions: res.data });
       })
       .catch(err => console.log(err));
   }
@@ -40,18 +40,19 @@ export class QuestionList extends React.Component {
     return (
       <div>
         <Header {...this.props} />
-        <div>
+        <div id='addQuestionLink'>
           <a
             href={`https://tubetest-react.herokuapp.com/question/${this.props.match.params.videoId}`}
-            target='_blank'>Add a Question
+            target='_blank'
+            >
+            Add a Question
           </a>
         </div>
         <div>
             {this.state.questions.map((q, i) => {
               return (
-                <div className="questionBox">
-                  <Question key={i} {...q} />
-                </div>
+                // pass along vote info for this question
+                <Question key={i} {...q} />
               )
             })}
         </div>
