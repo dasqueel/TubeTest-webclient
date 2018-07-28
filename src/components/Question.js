@@ -24,10 +24,15 @@ import React from 'react';
 import axios from 'axios';
 import { apiUrl } from '../config';
 import '../static/css/question.css';
+import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import Vote from './Vote';
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
+
+    // console.log('props usersVote: ', props.usersVote);
+    // would get usersVotes from this.props ?
 
     this.state = {
       selected: null
@@ -37,10 +42,8 @@ class Question extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      selected: event.target.value
-    });
+  handleChange(e) {
+    this.setState({ selected: e });
   }
 
   handleSubmit(event) {
@@ -65,30 +68,35 @@ class Question extends React.Component {
 
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
+        <div className='questionContainer'>
+        <div className='votingBox'>
+          <Vote {...this.props} /> {/* this.props should have user vote info this.props.score & this.props.vote */}
+        </div>
+        <div className='questionBox'>
           <p className="title">{this.props.text}</p>
-          <div className="vertical-radio-buttons">
+          <ToggleButtonGroup
+            name='choices'
+            type="radio"
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
             {this.props.choices.map((choice, i) => {
               return (
-                <div>
-                    <input
-                      key={i}
-                      type="radio"
-                      value={choice}
-                      id={choice}
-                      checked={this.state.selected === choice}
-                      onChange={this.handleChange}
-                    />
-                    <label htmlFor={choice}>{choice}</label>
-                </div>
+                  <ToggleButton
+                    key={i}
+                    value={choice}
+                    checked={this.state.selected === choice}
+                  >
+                    {choice}
+                  </ToggleButton>
               );
             })}
-
-            <div>
-              <button type="submit" className="submit-button">Select Answer</button>
-            </div>
-          </div>
-        </form>
+          </ToggleButtonGroup>
+            <span>
+              <button onClick={this.handleSubmit} className="submit-button">Select Answer</button>
+            </span>
+        </div>
+        </div>
     );
   }
 };

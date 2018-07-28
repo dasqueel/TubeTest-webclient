@@ -1,19 +1,25 @@
-.vertical-radio-buttons div {
+.questionContainer {
+  width: 70%;
+  height: 200px;
+  /* background-color: aqua; */
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.questionBox {
+  width: 200;
+  background-color: palevioletred;
+  margin-bottom: 10px;
   display: block;
-  padding: 0 0 5px 5px;
-  clear: both;
 }
 
-.vertical-radio-buttons label {
-  font-size: rem-calc(16);
-  float: left;
+.questionBox p {
+  font-size: 20px;
 }
 
-.vertical-radio-buttons input {
+.votingBox {
   float: left;
-  width: 20px;
-  margin-left: 20px;
-  margin-top: 6px;
-  padding: 0;
-  -webkit-appearance: radio;
+  width: 50px;
+  height: 200px;
+  /* background-color: blueviolet; */
 }
